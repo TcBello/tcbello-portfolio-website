@@ -1,0 +1,89 @@
+.navigation-container{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--black);
+    width: 100%;
+    height: 130px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: transparent;
+    position: fixed;
+    z-index: 1;
+}
+
+.navigation-container-active{
+    display: flex;
+    flex-direction: row;
+    background-color: var(--black);
+    width: 100%;
+    height: 130px;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--black);
+    position: fixed;
+    z-index: 1;
+}
+
+.logo{
+    background-image: url("../../../assets/logo.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    height: 130px;
+    width: 275px;
+    background-color: transparent;
+}
+
+.navigation-header {
+    border-bottom: solid 0px var(--blue-1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 50px;
+    width: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--white);
+    line-height: 0px;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.hire-button {
+    width: 170px;
+    height: 60px;
+    background-color: transparent;
+    border: solid 3px var(--blue-2);
+    border-radius: 8px;
+    color: var(--white);
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.hire-button:hover {
+    background-color: var(--blue-2);
+    border: solid 3px var(--blue-2);
+    border-radius: 8px;
+    color: var(--white);
+    margin-top: auto;
+    margin-bottom: auto;
+    font-size: 24px;
+}
+
+.hire-button:active {
+    background-color: var(--blue-4);
+    border: solid 3px var(--blue-2);
+    border-radius: 8px;
+    color: var(--white);
+    margin-top: auto;
+    margin-bottom: auto;
+}
