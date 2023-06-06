@@ -69,7 +69,7 @@ export default function NavigationBar() {
             Contact
         </motion.button>
         {/* HIRE ME BUTTON */}
-        <motion.button className="hire-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+        <motion.button onClick={scrollToContact} className="hire-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
             Hire Me
         </motion.button>
     </motion.nav>;
