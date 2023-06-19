@@ -1,89 +1,545 @@
-.navigation-container{
-    display: flex;
-    flex-direction: row;
-    background-color: var(--black);
-    width: 100%;
-    height: 130px;
-    justify-content: space-around;
-    align-items: center;
-    background-color: transparent;
-    position: fixed;
-    z-index: 1;
-}
-
-.navigation-container-active{
-    display: flex;
-    flex-direction: row;
-    background-color: var(--black);
-    width: 100%;
-    height: 130px;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--black);
-    position: fixed;
-    z-index: 1;
-}
-
-.logo{
-    background-image: url("../../../assets/logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-    height: 130px;
-    width: 275px;
-    background-color: transparent;
-}
-
-.navigation-header {
-    border-bottom: solid 0px var(--blue-1);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+.navigation-menu-button {
+    color: var(--white);
+    border: none;
     height: 50px;
-    width: auto;
-    padding-left: 10px;
-    padding-right: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--white);
-    line-height: 0px;
-    background-color: transparent;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
-
-.hire-button {
-    width: 170px;
-    height: 60px;
-    background-color: transparent;
-    border: solid 3px var(--blue-2);
-    border-radius: 8px;
-    color: var(--white);
-    margin-top: auto;
-    margin-bottom: auto;
-    font-weight: bold;
-    font-size: 24px;
-}
-
-.hire-button:hover {
+    width: 50px;
     background-color: var(--blue-2);
-    border: solid 3px var(--blue-2);
-    border-radius: 8px;
-    color: var(--white);
-    margin-top: auto;
-    margin-bottom: auto;
-    font-size: 24px;
+    border-radius: 50px;
+    margin-right: 16px;
+}
+.navigation-drawer {
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-.hire-button:active {
+.navigation-drawer-content {
     background-color: var(--blue-4);
-    border: solid 3px var(--blue-2);
-    border-radius: 8px;
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.navigation-close-button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50px;
+    background-color: transparent;
     color: var(--white);
-    margin-top: auto;
-    margin-bottom: auto;
+    margin-bottom: 16px;
+}
+
+.navigation-drawer-items {
+    width: 100%;
+    height: 50px;
+    border: none;
+    background-color: var(--blue-4);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.navigation-drawer-footer {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 5px;
+    border: none;
+    background-color: transparent;
+}
+
+.navigation-drawer-items-hire-button {
+    width: 80%;
+    height: 50px;
+    border: none;
+    background-color: var(--blue-2);
+    color: var(--white);
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        position: fixed;
+        z-index: 1;
+        overflow-y: hidden;
+    }
+    
+    .navigation-container-active{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--black);
+        position: fixed;
+        z-index: 1;
+        overflow-y: hidden;
+    }
+    
+    .logo{
+        background-image: url("../../../assets/logo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        /* height: 128px;
+        width: 273px; */
+        height: 100px;
+        width: 150px;
+        background-color: transparent;
+        margin-left: 16px;
+    }
+    
+    .navigation-header {
+        border-bottom: solid 0px var(--blue-1);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 50px;
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--white);
+        line-height: 0px;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .hire-button {
+        width: 160px;
+        height: 50px;
+        background-color: transparent;
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .hire-button:hover {
+        background-color: var(--blue-2);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 22px;
+    }
+    
+    .hire-button:active {
+        background-color: var(--blue-4);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        position: fixed;
+        z-index: 1;
+        overflow-y: hidden;
+    }
+    
+    .navigation-container-active{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--black);
+        position: fixed;
+        z-index: 1;
+        overflow-y: hidden;
+    }
+    
+    .logo{
+        background-image: url("../../../assets/logo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        /* height: 128px;
+        width: 273px; */
+        height: 100px;
+        width: 150px;
+        background-color: transparent;
+        margin-left: 16px;
+    }
+    
+    .navigation-header {
+        border-bottom: solid 0px var(--blue-1);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 50px;
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--white);
+        line-height: 0px;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .hire-button {
+        width: 160px;
+        height: 50px;
+        background-color: transparent;
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .hire-button:hover {
+        background-color: var(--blue-2);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 22px;
+    }
+    
+    .hire-button:active {
+        background-color: var(--blue-4);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: transparent;
+        position: fixed;
+        z-index: 1;
+        overflow-y: hidden;
+    }
+    
+    .navigation-container-active{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--black);
+        position: fixed;
+        z-index: 1;
+        overflow-y: hidden;
+    }
+    
+    .logo{
+        background-image: url("../../../assets/logo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        /* height: 128px;
+        width: 273px; */
+        height: 100px;
+        width: 150px;
+        background-color: transparent;
+        margin-left: 16px;
+    }
+    
+    .navigation-header {
+        border-bottom: solid 0px var(--blue-1);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 50px;
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--white);
+        line-height: 0px;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .hire-button {
+        width: 160px;
+        height: 50px;
+        background-color: transparent;
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .hire-button:hover {
+        background-color: var(--blue-2);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 22px;
+    }
+    
+    .hire-button:active {
+        background-color: var(--blue-4);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 993px) {
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 130px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: transparent;
+        position: fixed;
+        z-index: 1;
+    }
+    
+    .navigation-container-active{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 130px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--black);
+        position: fixed;
+        z-index: 1;
+    }
+    
+    .logo{
+        background-image: url("../../../assets/logo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 128px;
+        width: 273px;
+        background-color: transparent;
+    }
+    
+    .navigation-header {
+        border-bottom: solid 0px var(--blue-1);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 50px;
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        font-weight: bold;
+        color: var(--white);
+        line-height: 0px;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .hire-button {
+        width: 168px;
+        height: 58px;
+        background-color: transparent;
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-weight: bold;
+        font-size: 22px;
+    }
+    
+    .hire-button:hover {
+        background-color: var(--blue-2);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 22px;
+    }
+    
+    .hire-button:active {
+        background-color: var(--blue-4);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .navigation-container{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 130px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: transparent;
+        position: fixed;
+        z-index: 1;
+    }
+    
+    .navigation-container-active{
+        display: flex;
+        flex-direction: row;
+        background-color: var(--black);
+        width: 100%;
+        height: 130px;
+        justify-content: space-around;
+        align-items: center;
+        background-color: var(--black);
+        position: fixed;
+        z-index: 1;
+    }
+    
+    .logo{
+        background-image: url("../../../assets/logo.png");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        height: 130px;
+        width: 275px;
+        background-color: transparent;
+    }
+    
+    .navigation-header {
+        border-bottom: solid 0px var(--blue-1);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        height: 50px;
+        width: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--white);
+        line-height: 0px;
+        background-color: transparent;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+    }
+    
+    .hire-button {
+        width: 170px;
+        height: 60px;
+        background-color: transparent;
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-weight: bold;
+        font-size: 24px;
+    }
+    
+    .hire-button:hover {
+        background-color: var(--blue-2);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+        font-size: 24px;
+    }
+    
+    .hire-button:active {
+        background-color: var(--blue-4);
+        border: solid 3px var(--blue-2);
+        border-radius: 8px;
+        color: var(--white);
+        margin-top: auto;
+        margin-bottom: auto;
+    }
 }

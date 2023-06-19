@@ -6,12 +6,13 @@ import { ChevronLeftIcon, ChevronRightIcon, DownloadIcon, Icon } from '@chakra-u
 import Footer from "../widgets/footer";
 import LandingPageHeader from "../widgets/landing_page_header";
 import Slider from "@ant-design/react-slick";
-import { FormControl, FormLabel, Input, InputGroup, InputLeftElement, Textarea } from '@chakra-ui/react';
+import { FormControl, FormLabel, Image, Input, InputGroup, InputLeftElement, Textarea } from '@chakra-ui/react';
 import { MdMailOutline, MdPersonOutline } from "react-icons/md";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useMediaQuery } from "react-responsive";
 
 interface TechStack {
     logo: string,
@@ -98,13 +99,17 @@ const recentProjects: Project[] = [
 function LandingPage() {
     var slider: Slider|null = null;
 
+    const isSmallDevice = useMediaQuery({query: '(max-width: 992px)'});
+
     var settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 2,
+        slidesToShow: isSmallDevice ? 1 : 2,
+        slidesToScroll: isSmallDevice ? 1 : 2,
         arrows: false,
         className: "slider",
+        // centerMode: true,
+        // centerPadding: "10px",
         ref: (c: Slider|null) => {slider = c}
     };
     
@@ -115,11 +120,11 @@ function LandingPage() {
         <NavigationBar />
         {/* INTRODUCTION */}
         <section className="introduction-container-1" id="home">
-            <motion.section className="introduction-container-2" initial={{opacity: 0, y: 200}} whileInView={{opacity: 1, y: 0}} transition={{ease: "easeOut", duration: 0.5, delay: 0.3}}>
+            <motion.section className="introduction-container-2" initial={{opacity: 0, y: 100, backgroundColor: "transparent"}} whileInView={{opacity: 1, y: 0, backgroundColor: "transparent"}} transition={{ease: "easeOut", duration: 0.5, delay: 0.3}}>
                 <p className="intro-1">Hello! I'm</p>
                 <p className="intro-2">Thom Carlo Bello</p>
                 <p className="intro-3">Developer specializing in developing applications using React and Flutter</p>
-                <motion.button className="resume-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                <motion.button className="resume-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={()=>{console.log("test")}} whileInView={{zIndex: 0}}>
                     Get Resume
                     <DownloadIcon className="download-icon" />
                 </motion.button>
@@ -149,9 +154,9 @@ function LandingPage() {
         <div className="recent-projects-container-1" id="projects">
             <div className="recent-projects-container-2">
                 {/* RECENT PROJECT TEXT */}
-                <motion.h6 className="recent-projects-text" initial={{opacity: 0, x: -200}} whileInView={{opacity: 1, x: 0}}>Recent Projects</motion.h6>
+                <motion.h6 className="recent-projects-text" initial={{opacity: 0, x: -50}} whileInView={{opacity: 1, x: 0}}>Recent Projects</motion.h6>
                 {/* NEXT/PREV BUTTON */}
-                <motion.div className="recent-projects-button-container" initial={{opacity: 0, x: 200}} whileInView={{opacity: 1, x: 0}}>
+                <motion.div className="recent-projects-button-container" initial={{opacity: 0, x: 50}} whileInView={{opacity: 1, x: 0}}>
                     <motion.button className="recent-projects-arrow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={() => slider?.slickPrev()}>
                         <ChevronLeftIcon height={30} width={30} backgroundColor="transparent" />
                     </motion.button>
@@ -167,7 +172,8 @@ function LandingPage() {
                         return (
                             <div>
                                 <div className="slider-item" key={`project-${index}`}>
-                                    <img src={project.image} alt="name" className="slider-item-image" />
+                                    {/* <img src={project.image} alt="name" className="slider-item-image" /> */}
+                                    <Image src={project.image} alt="name" className="slider-item-image" objectFit={"cover"} objectPosition="center" />
                                     <p className="slider-item-title">{project.name}</p>
                                     <p className="slider-item-subtitle">{project.techStack}</p>
                                 </div>
@@ -178,10 +184,50 @@ function LandingPage() {
             </Slider>
         </div>
         {/* CONTACT ME */}
-        <section className="contact-me-container" id="contact">
-            <div className="contact-me-info-container">
+        {
+            isSmallDevice
+             ? <section className="contact-me-container-mobile" id="contact">
                 {/* CONTACT ME HEADER */}
                 <motion.p className="contact-me-header" initial={{opacity: 0, x: -200}} whileInView={{opacity: 1, x: 0}}>If you have any project or need help. Contact me</motion.p>
+                {/* CONTACT FIELDS */}
+                <motion.div initial={{opacity: 0, y: 200}} whileInView={{opacity: 1, y: 0}} className="contact-fields-container-mobile">
+                    <FormControl className="contact-fields-form-container">
+                        {/* FULL NAME FIELD */}
+                        {/* LABEL */}
+                        <FormLabel className="contact-field-label">Full Name</FormLabel>
+                        <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
+                            {/* PERSON ICON */}
+                            <InputLeftElement pointerEvents='none' className="contact-field-icon" >
+                                <Icon as={MdPersonOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
+                            </InputLeftElement>
+                            {/* TEXT FIELD */}
+                            <Input type='text' variant='filled' placeholder='Enter your name' className="contact-me-textfield" />
+                        </InputGroup>
+                        {/* EMAIL FIELD */}
+                        {/* LABEL */}
+                        <FormLabel className="contact-field-label">Email</FormLabel>
+                        <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
+                            {/* EMAIL ICON */}
+                            <InputLeftElement pointerEvents='none' className="contact-field-icon" >
+                                <Icon as={MdMailOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
+                            </InputLeftElement>
+                            {/* TEXT FIELD */}
+                            <Input type='email' variant='filled' placeholder='Email' className="contact-me-textfield" />
+                        </InputGroup>
+                        {/* MESSAGE FIELD */}
+                        {/* LABEL */}
+                        <FormLabel className="contact-field-label">Message</FormLabel>
+                        {/* TEXT FIELD */}
+                        <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
+                            <Textarea placeholder='Message' className="contact-me-message" />
+                        </InputGroup>
+                        {/* SUBMIT BUTTON */}
+                        <motion.button className="contact-submit-button" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                            Submit
+                        </motion.button>
+                    </FormControl>
+                </motion.div>
+                <div style={{height: 50}} />
                 <motion.div className="contact-me-follow-container" initial={{opacity: 0, x: -200}} whileInView={{opacity: 1, x: 0}}>
                     {/* CONTACT ME HEADER */}
                     <p className="contact-me-header">Follow Me</p>
@@ -198,45 +244,67 @@ function LandingPage() {
                         </motion.button>
                     </div>
                 </motion.div>
-            </div>
-            <motion.div initial={{opacity: 0, y: 200}} whileInView={{opacity: 1, y: 0}} className="contact-fields-container">
-                <FormControl className="contact-fields-form-container">
-                    {/* FULL NAME FIELD */}
-                    {/* LABEL */}
-                    <FormLabel className="contact-field-label">Full Name</FormLabel>
-                    <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
-                        {/* PERSON ICON */}
-                        <InputLeftElement pointerEvents='none' className="contact-field-icon" >
-                            <Icon as={MdPersonOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
-                        </InputLeftElement>
+             </section>
+             : <section className="contact-me-container" id="contact">
+                <div className="contact-me-info-container">
+                    {/* CONTACT ME HEADER */}
+                    <motion.p className="contact-me-header" initial={{opacity: 0, x: -200}} whileInView={{opacity: 1, x: 0}}>If you have any project or need help. Contact me</motion.p>
+                    <motion.div className="contact-me-follow-container" initial={{opacity: 0, x: -200}} whileInView={{opacity: 1, x: 0}}>
+                        {/* CONTACT ME HEADER */}
+                        <p className="contact-me-header">Follow Me</p>
+                        {/* SOCIAL MEDIA BUTTONS */}
+                        <div className="contact-me-follow-items">
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                                <Icon as={FaFacebookF} className="contact-me-follow-item-icon" height={30} width={30} />
+                            </motion.button>
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                                <Icon as={FaTwitter} className="contact-me-follow-item-icon" height={30} width={30} />
+                            </motion.button>
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                                <Icon as={FaLinkedinIn} className="contact-me-follow-item-icon" height={30} width={30} />
+                            </motion.button>
+                        </div>
+                    </motion.div>
+                </div>
+                <motion.div initial={{opacity: 0, y: 200}} whileInView={{opacity: 1, y: 0}} className="contact-fields-container">
+                    <FormControl className="contact-fields-form-container">
+                        {/* FULL NAME FIELD */}
+                        {/* LABEL */}
+                        <FormLabel className="contact-field-label">Full Name</FormLabel>
+                        <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
+                            {/* PERSON ICON */}
+                            <InputLeftElement pointerEvents='none' className="contact-field-icon" >
+                                <Icon as={MdPersonOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
+                            </InputLeftElement>
+                            {/* TEXT FIELD */}
+                            <Input type='text' variant='filled' placeholder='Enter your name' className="contact-me-textfield" />
+                        </InputGroup>
+                        {/* EMAIL FIELD */}
+                        {/* LABEL */}
+                        <FormLabel className="contact-field-label">Email</FormLabel>
+                        <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
+                            {/* EMAIL ICON */}
+                            <InputLeftElement pointerEvents='none' className="contact-field-icon" >
+                                <Icon as={MdMailOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
+                            </InputLeftElement>
+                            {/* TEXT FIELD */}
+                            <Input type='email' variant='filled' placeholder='Email' className="contact-me-textfield" />
+                        </InputGroup>
+                        {/* MESSAGE FIELD */}
+                        {/* LABEL */}
+                        <FormLabel className="contact-field-label">Message</FormLabel>
                         {/* TEXT FIELD */}
-                        <Input type='text' variant='filled' placeholder='Enter your name' className="contact-me-textfield" />
-                    </InputGroup>
-                    {/* EMAIL FIELD */}
-                    {/* LABEL */}
-                    <FormLabel className="contact-field-label">Email</FormLabel>
-                    <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
-                        {/* EMAIL ICON */}
-                        <InputLeftElement pointerEvents='none' className="contact-field-icon" >
-                            <Icon as={MdMailOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
-                        </InputLeftElement>
-                        {/* TEXT FIELD */}
-                        <Input type='email' variant='filled' placeholder='Email' className="contact-me-textfield" />
-                    </InputGroup>
-                    {/* MESSAGE FIELD */}
-                    {/* LABEL */}
-                    <FormLabel className="contact-field-label">Message</FormLabel>
-                    {/* TEXT FIELD */}
-                    <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
-                        <Textarea placeholder='Message' className="contact-me-message" />
-                    </InputGroup>
-                    {/* SUBMIT BUTTON */}
-                    <motion.button className="contact-submit-button" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
-                        Submit
-                    </motion.button>
-                </FormControl>
-            </motion.div>
-        </section>
+                        <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
+                            <Textarea placeholder='Message' className="contact-me-message" />
+                        </InputGroup>
+                        {/* SUBMIT BUTTON */}
+                        <motion.button className="contact-submit-button" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                            Submit
+                        </motion.button>
+                    </FormControl>
+                </motion.div>
+            </section>
+        }
         {/* FOOTER */}
         <Footer />
     </div>;
