@@ -96,7 +96,7 @@ const recentProjects: Project[] = [
     }
 ];
 
-function LandingPage() {
+const LandingPage = () => {
     var slider: Slider|null = null;
 
     const isSmallDevice = useMediaQuery({query: '(max-width: 992px)'});
@@ -112,6 +112,19 @@ function LandingPage() {
         // centerPadding: "10px",
         ref: (c: Slider|null) => {slider = c}
     };
+
+    function goToFacebook() {
+        window.open("https://www.facebook.com/SxzOtaku");
+    }
+
+    function goToTwitter() {
+        window.open("https://twitter.com/tcbello16");
+    }
+
+    function goToLinkedIn() {
+        window.open("https://www.linkedin.com/in/tcbello/");
+    }
+
     
     return <div>
         {/* BACKGROUND IMAGE */}
@@ -233,13 +246,13 @@ function LandingPage() {
                     <p className="contact-me-header">Follow Me</p>
                     {/* SOCIAL MEDIA BUTTONS */}
                     <div className="contact-me-follow-items">
-                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToFacebook}>
                             <Icon as={FaFacebookF} className="contact-me-follow-item-icon" height={30} width={30} />
                         </motion.button>
-                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToTwitter}>
                             <Icon as={FaTwitter} className="contact-me-follow-item-icon" height={30} width={30} />
                         </motion.button>
-                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToLinkedIn}>
                             <Icon as={FaLinkedinIn} className="contact-me-follow-item-icon" height={30} width={30} />
                         </motion.button>
                     </div>
@@ -254,13 +267,13 @@ function LandingPage() {
                         <p className="contact-me-header">Follow Me</p>
                         {/* SOCIAL MEDIA BUTTONS */}
                         <div className="contact-me-follow-items">
-                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToFacebook}>
                                 <Icon as={FaFacebookF} className="contact-me-follow-item-icon" height={30} width={30} />
                             </motion.button>
-                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToTwitter}>
                                 <Icon as={FaTwitter} className="contact-me-follow-item-icon" height={30} width={30} />
                             </motion.button>
-                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToLinkedIn}>
                                 <Icon as={FaLinkedinIn} className="contact-me-follow-item-icon" height={30} width={30} />
                             </motion.button>
                         </div>

@@ -15,7 +15,7 @@ export default function NavigationBar() {
     const delayNavigate = 150;
 
     useMotionValueEvent(scrollY, "change", (latestScrollY: number) => {
-        console.log(latestScrollY);
+        // console.log(latestScrollY);
         if(latestScrollY >= 700) setActive(true);
         else setActive(false);
     })
