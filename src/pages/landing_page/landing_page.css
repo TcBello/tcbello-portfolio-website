@@ -108,12 +108,12 @@
     }
 
     .resume-button:active {
-        width: 288px;
-        height: 83px;
+        width: 264px;
+        height: 59px;
         color: var(--white);
         background-color: var(--blue-4);
         border: solid 3px var(--blue-2);
-        font-size: 22px;
+        font-size: 20px;
         border-radius: 50px;
     }
 
@@ -526,12 +526,12 @@
     }
 
     .resume-button:active {
-        width: 288px;
-        height: 83px;
+        width: 274px;
+        height: 69px;
         color: var(--white);
         background-color: var(--blue-4);
         border: solid 3px var(--blue-2);
-        font-size: 22px;
+        font-size: 20px;
         border-radius: 50px;
     }
 
@@ -934,22 +934,22 @@
     }
 
     .resume-button:hover {
-        width: 288px;
-        height: 83px;
+        width: 284px;
+        height: 79px;
         color: var(--white);
         background-color: var(--blue-2);
         border: solid 3px var(--blue-2);
-        font-size: 22px;
+        font-size: 20px;
         border-radius: 50px;
     }
 
     .resume-button:active {
-        width: 288px;
-        height: 83px;
+        width: 284px;
+        height: 79px;
         color: var(--white);
         background-color: var(--blue-4);
         border: solid 3px var(--blue-2);
-        font-size: 22px;
+        font-size: 20px;
         border-radius: 50px;
     }
 
