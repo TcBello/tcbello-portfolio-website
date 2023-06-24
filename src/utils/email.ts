@@ -15,10 +15,8 @@ export async function sendEmail(message: string, name: string, email: string) {
             },
             body: JSON.stringify(emailBody)
         });
-
-        console.log(message, name, email);
         
-        if(res.status == 200){
+        if(res.status === 200){
             return true
         }
         else return false;

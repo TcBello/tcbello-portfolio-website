@@ -1,6 +1,6 @@
 import { Icon } from "@chakra-ui/react";
 import { MdCancel, MdCheckCircle, MdInfo } from "react-icons/md";
-import toast, { createToast } from "react-simple-toasts";
+import { createToast } from "react-simple-toasts";
 import "./toast.css";
 
 const duration = 2000;

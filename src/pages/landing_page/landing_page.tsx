@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon, DownloadIcon, Icon } from '@chakra-u
 import Footer from "../widgets/footer";
 import LandingPageHeader from "../widgets/landing_page_header";
 import Slider from "@ant-design/react-slick";
-import { FormControl, FormErrorMessage, FormLabel, Image, Input, InputGroup, InputLeftElement, Textarea } from '@chakra-ui/react';
+import { FormControl, FormLabel, Image, Input, InputGroup, InputLeftElement, Textarea } from '@chakra-ui/react';
 import { MdEmail, MdMailOutline, MdPersonOutline } from "react-icons/md";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
 
@@ -115,8 +115,6 @@ const LandingPage = () => {
         slidesToScroll: isSmallDevice ? 1 : 2,
         arrows: false,
         className: "slider",
-        // centerMode: true,
-        // centerPadding: "10px",
         ref: (c: Slider|null) => {slider = c}
     };
 
