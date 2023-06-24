@@ -137,7 +137,7 @@ const LandingPage = () => {
     }
 
     function goToEmail() {
-        window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bellothomcarlo@gmail.com&su=Hire+you")
+        window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&to=hire.thombello@gmail.com&su=Hire+you")
     }
 
     async function submitForm() {
