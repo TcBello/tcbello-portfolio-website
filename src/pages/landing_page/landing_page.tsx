@@ -6,13 +6,16 @@ import { ChevronLeftIcon, ChevronRightIcon, DownloadIcon, Icon } from '@chakra-u
 import Footer from "../widgets/footer";
 import LandingPageHeader from "../widgets/landing_page_header";
 import Slider from "@ant-design/react-slick";
-import { FormControl, FormLabel, Image, Input, InputGroup, InputLeftElement, Textarea } from '@chakra-ui/react';
-import { MdMailOutline, MdPersonOutline } from "react-icons/md";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { FormControl, FormErrorMessage, FormLabel, Image, Input, InputGroup, InputLeftElement, Textarea } from '@chakra-ui/react';
+import { MdEmail, MdMailOutline, MdPersonOutline } from "react-icons/md";
+import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMediaQuery } from "react-responsive";
+import { sendEmail } from "../../utils/email";
+import { useState } from "react";
+import { showErrorToast, showInfoToast, showSuccessToast } from "../widgets/toast";
 
 interface TechStack {
     logo: string,
@@ -97,6 +100,10 @@ const recentProjects: Project[] = [
 ];
 
 const LandingPage = () => {
+    const [name, setName] = useState<string|null>(null);
+    const [email, setEmail] = useState<string|null>(null);
+    const [message, setMessage] = useState<string|null>(null);
+
     var slider: Slider|null = null;
 
     const isSmallDevice = useMediaQuery({query: '(max-width: 992px)'});
@@ -125,6 +132,27 @@ const LandingPage = () => {
         window.open("https://www.linkedin.com/in/tcbello/");
     }
 
+    function goToGithub() {
+        window.open("https://github.com/tcbello");
+    }
+
+    function goToEmail() {
+        window.open("https://mail.google.com/mail/u/0/?view=cm&fs=1&to=bellothomcarlo@gmail.com&su=Hire+you")
+    }
+
+    async function submitForm() {
+        if(name != null && email != null && message != null){
+            let result = await sendEmail(message, name, email);
+        
+            if(result){
+                setName(null);
+                setEmail(null);
+                setMessage(null);
+                showSuccessToast("Email sent");
+            } else showErrorToast("Something went wrong");
+        } else showInfoToast("Fill up missing fields")
+    }
+
     
     return <div>
         {/* BACKGROUND IMAGE */}
@@ -150,7 +178,6 @@ const LandingPage = () => {
                 <LandingPageHeader title="Tech Stack"/>
             </motion.div>
             <div className="tech-stack-items-container">
-                {/* FLUTTER */}
                 {
                     techStacks.map((tech, key) => {
                         return (
@@ -185,7 +212,6 @@ const LandingPage = () => {
                         return (
                             <div>
                                 <div className="slider-item" key={`project-${index}`}>
-                                    {/* <img src={project.image} alt="name" className="slider-item-image" /> */}
                                     <Image src={project.image} alt="name" className="slider-item-image" objectFit={"cover"} objectPosition="center" />
                                     <p className="slider-item-title">{project.name}</p>
                                     <p className="slider-item-subtitle">{project.techStack}</p>
@@ -214,7 +240,7 @@ const LandingPage = () => {
                                 <Icon as={MdPersonOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
                             </InputLeftElement>
                             {/* TEXT FIELD */}
-                            <Input type='text' variant='filled' placeholder='Enter your name' className="contact-me-textfield" />
+                            <Input value={name ?? ""} type='text' variant='filled' placeholder='Enter your name' className="contact-me-textfield" onChange={(e) => setName(e.target.value)} />
                         </InputGroup>
                         {/* EMAIL FIELD */}
                         {/* LABEL */}
@@ -225,17 +251,17 @@ const LandingPage = () => {
                                 <Icon as={MdMailOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
                             </InputLeftElement>
                             {/* TEXT FIELD */}
-                            <Input type='email' variant='filled' placeholder='Email' className="contact-me-textfield" />
+                            <Input value={email ?? ""} type='email' variant='filled' placeholder='Email' className="contact-me-textfield" onChange={(e) => setEmail(e.target.value)} />
                         </InputGroup>
                         {/* MESSAGE FIELD */}
                         {/* LABEL */}
                         <FormLabel className="contact-field-label">Message</FormLabel>
                         {/* TEXT FIELD */}
                         <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
-                            <Textarea placeholder='Message' className="contact-me-message" />
+                            <Textarea value={message ?? ""} placeholder='Message' className="contact-me-message" onChange={(e) => setMessage(e.target.value)} />
                         </InputGroup>
                         {/* SUBMIT BUTTON */}
-                        <motion.button className="contact-submit-button" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                        <motion.button className="contact-submit-button" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={submitForm}>
                             Submit
                         </motion.button>
                     </FormControl>
@@ -254,6 +280,12 @@ const LandingPage = () => {
                         </motion.button>
                         <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToLinkedIn}>
                             <Icon as={FaLinkedinIn} className="contact-me-follow-item-icon" height={30} width={30} />
+                        </motion.button>
+                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToGithub}>
+                            <Icon as={FaGithub} className="contact-me-follow-item-icon" height={30} width={30} />
+                        </motion.button>
+                        <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToEmail}>
+                            <Icon as={MdEmail} className="contact-me-follow-item-icon" height={30} width={30} />
                         </motion.button>
                     </div>
                 </motion.div>
@@ -276,6 +308,12 @@ const LandingPage = () => {
                             <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToLinkedIn}>
                                 <Icon as={FaLinkedinIn} className="contact-me-follow-item-icon" height={30} width={30} />
                             </motion.button>
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToGithub}>
+                                <Icon as={FaGithub} className="contact-me-follow-item-icon" height={30} width={30} />
+                            </motion.button>
+                            <motion.button className="contact-me-follow-button" whileHover={{scale: 1.2}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={goToEmail}>
+                                <Icon as={MdEmail} className="contact-me-follow-item-icon" height={30} width={30} />
+                            </motion.button>
                         </div>
                     </motion.div>
                 </div>
@@ -290,7 +328,7 @@ const LandingPage = () => {
                                 <Icon as={MdPersonOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
                             </InputLeftElement>
                             {/* TEXT FIELD */}
-                            <Input type='text' variant='filled' placeholder='Enter your name' className="contact-me-textfield" />
+                            <Input value={name ?? ""} type='text' variant='filled' placeholder='Enter your name' className="contact-me-textfield" onChange={(e) => setName(e.target.value)} />
                         </InputGroup>
                         {/* EMAIL FIELD */}
                         {/* LABEL */}
@@ -301,17 +339,17 @@ const LandingPage = () => {
                                 <Icon as={MdMailOutline} style={{backgroundColor: "transparent", width: 30, height: 30}}/>
                             </InputLeftElement>
                             {/* TEXT FIELD */}
-                            <Input type='email' variant='filled' placeholder='Email' className="contact-me-textfield" />
+                            <Input value={email ?? ""} type='email' variant='filled' placeholder='Email' className="contact-me-textfield" onChange={(e) => setEmail(e.target.value)} />
                         </InputGroup>
                         {/* MESSAGE FIELD */}
                         {/* LABEL */}
                         <FormLabel className="contact-field-label">Message</FormLabel>
                         {/* TEXT FIELD */}
                         <InputGroup style={{backgroundColor: "transparent", marginBottom: 20}}>
-                            <Textarea placeholder='Message' className="contact-me-message" />
+                            <Textarea value={message ?? ""} placeholder='Message' className="contact-me-message" onChange={(e) => setMessage(e.target.value)} />
                         </InputGroup>
                         {/* SUBMIT BUTTON */}
-                        <motion.button className="contact-submit-button" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}}>
+                        <motion.button className="contact-submit-button" whileHover={{scale: 1.1}} whileTap={{scale: 0.9}} transition={{type: "spring", stiffness: 300}} onClick={submitForm}>
                             Submit
                         </motion.button>
                     </FormControl>

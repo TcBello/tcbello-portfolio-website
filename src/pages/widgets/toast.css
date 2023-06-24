@@ -1,0 +1,38 @@
+.success-toast {
+    background-color: green;
+    color: white;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+.error-toast {
+    background-color: red;
+    color: white;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
+
+.info-toast {
+    background-color: var(--grey);
+    color: white;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+}
