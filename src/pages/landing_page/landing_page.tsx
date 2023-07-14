@@ -144,8 +144,8 @@ const LandingPage = () => {
               <motion.div
                 className="tech-stack-item"
                 key={`tech-item-${key}`}
-                initial={{ x: -200 }}
-                whileInView={{ x: 0 }}
+                initial={{ x: -200, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 <img
