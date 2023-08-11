@@ -59,6 +59,12 @@ export const techStacks: TechStack[] = [
 export const recentProjects: Project[] = [
   {
     image:
+      "https://raw.githubusercontent.com/TcBello/chatty/master/screenshots/chat_page_ss_2.png",
+    name: "Chatty",
+    techStack: "MongoDB|Express|React|NodeJS|Socket.io",
+  },
+  {
+    image:
       "https://raw.githubusercontent.com/TcBello/CapMS/master/screenshots/Screenshot1.png",
     name: "Capstone Management System",
     techStack: "React|Firebase",

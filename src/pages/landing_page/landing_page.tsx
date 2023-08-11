@@ -214,9 +214,9 @@ const LandingPage = () => {
                 <div className="slider-item" key={`project-${index}`}>
                   <Image
                     src={project.image}
-                    alt="name"
+                    alt={project.name}
                     className="slider-item-image"
-                    objectFit={"cover"}
+                    objectFit={"fill"}
                     objectPosition="center"
                   />
                   <p className="slider-item-title">{project.name}</p>
