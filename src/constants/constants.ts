@@ -57,6 +57,13 @@ export const techStacks: TechStack[] = [
 ];
 
 export const recentProjects: Project[] = [
+  // V V V V INSERT LATEST PROJECT HERE V V V V
+  {
+    image:
+      "https://github.com/TcBello/Movies/blob/master/screenshots/ss_2.png?raw=true",
+    name: "Movies",
+    techStack: "React|OMDB API",
+  },
   {
     image:
       "https://raw.githubusercontent.com/TcBello/chatty/master/screenshots/chat_page_ss_2.png",
