@@ -216,7 +216,7 @@ const LandingPage = () => {
                     src={project.image}
                     alt={project.name}
                     className="slider-item-image"
-                    objectFit={"fill"}
+                    objectFit={isSmallDevice ? "cover" : "fill"}
                     objectPosition="center"
                   />
                   <p className="slider-item-title">{project.name}</p>
