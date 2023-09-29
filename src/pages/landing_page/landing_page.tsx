@@ -210,18 +210,16 @@ const LandingPage = () => {
         <Slider {...settings}>
           {recentProjects.map((project, index) => {
             return (
-              <div>
-                <div className="slider-item" key={`project-${index}`}>
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    className="slider-item-image"
-                    objectFit={isSmallDevice ? "cover" : "fill"}
-                    objectPosition="center"
-                  />
-                  <p className="slider-item-title">{project.name}</p>
-                  <p className="slider-item-subtitle">{project.techStack}</p>
-                </div>
+              <div className="slider-item" key={`project-${index}`}>
+                <Image
+                  src={project.image}
+                  alt={project.name}
+                  className="slider-item-image"
+                  objectFit={isSmallDevice ? "cover" : "fill"}
+                  objectPosition="center"
+                />
+                <p className="slider-item-title">{project.name}</p>
+                <p className="slider-item-subtitle">{project.techStack}</p>
               </div>
             );
           })}
